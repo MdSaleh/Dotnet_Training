@@ -20,70 +20,142 @@
         }
     }
 
-    internal class Program : propertiesDemo
+    internal class Program 
     {
         static void Main(string[] args)
         {
-            benzCar benzCar = new benzCar();
-            benzCar.carCount();
+            HDFCSavingsAccount asmaSBAccount = new HDFCSavingsAccount();
+            asmaSBAccount.CreateAccount();
+            asmaSBAccount.getUserOnlineDetails();
 
-            propertiesDemo propertiesDemo = new propertiesDemo();
-            Console.WriteLine(propertiesDemo.readAge);
+            HDFCDematAccount salehaDematAcc = new HDFCDematAccount();
+            salehaDematAcc.CreateAccount();
+            salehaDematAcc.getUserOnlineDetails();
         }
     }
 
-    public abstract class vehicletempalte 
+    public interface  HDFCTopCustomers : CoolFeaturesHDFC
     {
-        public abstract void start();
-        public abstract void stop();
-        public abstract void horn();
-        public string carCount()
-        {
-            return "3";
-        }
+        void Homebankingservice();
+        void FreeCreditCardService();
     }
 
-    public interface Ivehicleextrafacilicites
+    public interface CoolFeaturesHDFC
     {
-        public void startAC();
+        void CashBackPoints();
+        void payFeesFDorFree();
     }
-
-    public class benzCar : vehicletempalte, Ivehicleextrafacilicites
+    public abstract class HDFCCustomer
     {
-        public override void start()
+        public abstract void CreateAccount();
+        public abstract void ModifyAccount();
+        public abstract void DeleteAccount();
+        public abstract void UpdateAccount();
+        public void getUserOnlineDetails()
         {
-            Console.WriteLine("car started");
-        }
-        public override void stop()
-        {
-            Console.WriteLine("car stopped");
-        }
-        public override void horn()
-        {
-            Console.WriteLine("car hoking");
-        }
-        public void startAC()
-        {
-            Console.WriteLine("AC started 30");
+            //get ip address
+            //get network name
+            //get geo location of customer
+
+            Console.WriteLine("reading customer ip address, network address, geo location");
         }
     }
 
-    public class AudiCar : benzCar
-        public override void start()
+    public class HDFCNormalSavingsAccount : HDFCCustomer
+    {
+        public override void CreateAccount()
         {
-            Console.WriteLine("car started");
+            //check if adhaar is valid
+            //chaeck if dob is in range, minimum 18yrs 
+            //create account (in sb account table)
         }
-        public override void stop()
+
+        public override void DeleteAccount()
         {
-            Console.WriteLine("car stopped");
+            throw new NotImplementedException();
         }
-        public override void horn()
+
+        public override void ModifyAccount()
         {
-            Console.WriteLine("car hoking");
+            throw new NotImplementedException();
         }
-        public void startAC()
+
+        public override void UpdateAccount()
         {
-            Console.WriteLine("AC started 15");
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class HDFCTopSavingsAccount : HDFCCustomer, HDFCTopCustomers
+    {
+        public void CashBackPoints()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void CreateAccount()
+        {
+            //check if adhaar is valid
+            //chaeck if dob is in range, minimum 18yrs 
+            //create account (in sb account table)
+        }
+
+        public override void DeleteAccount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FreeCreditCardService()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Homebankingservice()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ModifyAccount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void payFeesFDorFree()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void UpdateAccount()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class HDFCDematAccount : HDFCCustomer
+    {
+        public override void CreateAccount()
+        {
+            //check if hdfc account already avalible
+            //check if pan is valid 
+            //check if no deafultation
+            // check if adhaar valid
+            //create demat account (demat account table)
+        }
+
+        public override void DeleteAccount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ModifyAccount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void UpdateAccount()
+        {
+            throw new NotImplementedException();
         }
     }
 
